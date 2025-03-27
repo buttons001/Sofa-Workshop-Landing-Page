@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .hero-gradient {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.3));
+  }
+
+  .service-card {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .service-card:hover {
+    transform: translateY(-8px);
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .mobile-nav-link {
+    @apply relative text-3xl font-light;
+  }
+
+  .mobile-nav-link::after {
+    content: '';
+    @apply absolute left-0 -bottom-2 w-0 h-0.5 bg-amber-500 transition-all duration-300;
+  }
+
+  .mobile-nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .scroll-indicator {
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+
+  .process-step {
+    @apply relative pl-8 before:absolute before:left-0 before:top-0 before:w-0.5 before:h-full before:bg-amber-200;
+  }
+
+  .process-step::after {
+    content: '';
+    @apply absolute -left-[7px] top-8 w-4 h-4 rounded-full bg-amber-500;
+  }
+
+  .testimonial-card {
+    @apply relative overflow-hidden;
+  }
+
+  .testimonial-card::before {
+    content: '"';
+    @apply absolute -top-4 -left-4 text-9xl text-amber-100 font-serif opacity-50;
+  }
+
+  .image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .gallery-item {
+    @apply relative overflow-hidden rounded-2xl aspect-square;
+  }
+
+  .gallery-item img {
+    @apply w-full h-full object-cover transition-transform duration-700;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.05);
+  }
+
+  .contact-input {
+    @apply w-full px-4 py-3 bg-gray-700 rounded-lg border border-gray-600 focus:ring-2 focus:ring-amber-500 focus:border-transparent focus:outline-none transition-all duration-300;
+  }
+
+  .contact-input:focus {
+    @apply transform -translate-y-1;
+  }
+}
